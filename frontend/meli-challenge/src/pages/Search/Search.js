@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import ProductsListCard from "../../components/ProductsListCard/ProductsListCard"
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 import Loader from "react-loader-spinner";
 import Api from "../../helper/api";
@@ -48,21 +48,13 @@ function Search() {
 
     return (
         <Layout>
-            <div className="main">
-                <Container fluid>
-                    <Row>
-                        <Col md={{ span: 10, offset: 1 }}>
-                            <Breadcrumb breadcrumb="Electónica, Audio y video  >  iPod  >  Reproductores  >  iPod touch  >  32GB" />
-                            {fetchingApi &&
-                                <div className="full-width-centered">
-                                    <Loader type="TailSpin" color="#00BFFF" height={160} width={160} />
-                                </div>
-                            }
-                            {itemsList()}
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+            <Breadcrumb breadcrumb="Electónica, Audio y video  >  iPod  >  Reproductores  >  iPod touch  >  32GB" />
+            {fetchingApi &&
+                <div className="full-width-centered">
+                    <Loader type="TailSpin" color="#00BFFF" height={180} width={180} />
+                </div>
+            }
+            {itemsList()}
         </Layout>
     );
 }

@@ -4,22 +4,33 @@ import logo from '../../assets/icons/Logo_ML@2x.png';
 import searchIcon from '../../assets/icons/ic_Search.png';
 import { useSearchParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import useWindowSize from "../CustomHooks/useWindowSize";
 import './SearchBar.sass';
 
 function SearchBar(props) {
+    const windowWidth = useWindowSize()[0];
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const [searchValue, setSearchValue] = useState("");
+    const [pageOffset, setPageOffset] = useState(1);
 
     useEffect(() => {
-        if (searchParams.get('search') !== undefined && searchParams.get('search') !== null && searchParams.get('search') !== "")
+        if (searchParams.get('search') !== undefined && searchParams.get('search') !== null && searchParams.get('search') !== ""){
             setSearchValue(searchParams.get('search').trim())
-    }, [searchParams]);
+        }
+
+        if (windowWidth >= 1400) {
+            setPageOffset(2)
+        } else {
+            setPageOffset(1)
+        }
+
+    }, [searchParams, windowWidth]);
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        
-        if(searchValue !== ""){
+
+        if (searchValue !== "") {
             props.handleSearch(searchValue)
         }
     }
@@ -32,7 +43,7 @@ function SearchBar(props) {
         <>
             <Container fluid>
                 <Row className="navbar">
-                    <Col md={{ span: 10, offset: 1 }}>
+                    <Col md={{ span: 12 - (pageOffset * 2), offset: pageOffset }}>
                         <Row>
                             <Col className="center-v" lg={1}>
                                 <img className="logo" src={logo} alt="MELI Logo" onClick={handleToMainPage}></img>
