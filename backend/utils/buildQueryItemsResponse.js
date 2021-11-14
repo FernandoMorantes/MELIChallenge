@@ -20,6 +20,7 @@ function buildQueryItemsResponse(rawRes) {
                 newItem["picture"] = rawItem.thumbnail;
                 newItem["condition"] = rawItem.condition;
                 newItem["free_shipping"] = rawItem.shipping.free_shipping;
+                newItem["address"] = `${rawItem.address.city_name}, ${rawItem.address.state_name}`;
 
                 buildedItems.push(newItem);
 
