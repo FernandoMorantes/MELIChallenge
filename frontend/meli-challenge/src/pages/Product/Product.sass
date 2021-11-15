@@ -1,0 +1,95 @@
+@import "../../variables"
+    
+.detail-card
+    background-color: #ffffff
+    border-radius: 4px
+    display: flex
+    padding: 32px
+    flex-direction: column
+
+    @media screen and (max-width: $small-breakpoint)
+        border-radius: 0
+
+    .main-info
+        width: 100%
+        display: flex
+        flex-direction: row
+
+        @media screen and (max-width: $small-breakpoint)
+            flex-direction: column
+
+        .detail-img
+            width: 70%
+            max-width: 680px
+            height: auto
+            overflow: hidden
+            object-fit: contain
+            border-radius: 4px
+
+            @media screen and (max-width: $xl-breakpoint)
+                min-width: 60%
+
+        .detail-info
+            margin-left: 32px
+            max-width: calc(100% - 700px)
+
+            @media screen and (max-width: $xl-breakpoint)
+                max-width: 40%
+
+            @media screen and (max-width: $small-breakpoint)
+                max-width: 100%
+                margin-left: 0
+                margin-top: 32px
+
+            .small
+                font-size: 14px
+                color: $gray
+                margin-bottom: 16px
+
+            h3
+                font-size: 24px
+                font-weight: bolder
+                margin-bottom: 32px
+
+            .price
+                display: flex
+                flex-direction: row
+                align-items: flex-start
+                justify-content: flex-start
+
+                h1
+                    font-size: 46px
+                    margin-bottom: 32px
+
+                p
+                    margin-left: 4px
+                    font-size: 24px
+                    color: $gray
+
+            .buy-btn
+                padding: 8px 72px
+                max-width: 100%
+                background-color: $secondary
+                color: #fff
+                border-radius: 4px
+                border: none
+                outline: none
+        
+    .detail-description
+        margin-top: 120px
+        width: 680px
+
+        @media screen and (max-width: $xl-breakpoint)
+            width: 60%
+
+        @media screen and (max-width: $small-breakpoint)
+            width: 100%
+
+        h1
+            font-size: 28px
+            margin-bottom: 32px
+
+        p
+            font-size: 16px
+            color: $gray
+            margin: 0px
