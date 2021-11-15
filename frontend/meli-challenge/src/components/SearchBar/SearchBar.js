@@ -63,8 +63,9 @@ function SearchBar(props) {
         }
         
         newSearchHistory.unshift(newEntry)
+
         if (newSearchHistory.length > 9) {
-            newSearchHistory.shift();
+            newSearchHistory.pop();
         }
 
         setSearchHistory(newSearchHistory);
