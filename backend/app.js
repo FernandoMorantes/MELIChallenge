@@ -40,8 +40,8 @@ app.use(function (req, res, next) {
 });
 
 // healthy
-app.get('/', function (req, res) {
-    res.status(500).send('API Challenge MELI working!. v1.0');
+app.get('/api/', function (req, res) {
+    res.status(500).send('MELI Challenge APÌ working!. v1.0');
 });
 
 app.use('/api/items', items);
