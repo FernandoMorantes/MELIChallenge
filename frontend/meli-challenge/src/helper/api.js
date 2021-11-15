@@ -24,15 +24,38 @@ export default class Api {
         return new Promise(resolve => {
             this.init().get("/items", { params: params }).then(res => {
                 resolve(res.data)
+            }).catch(err =>{
+                resolve({
+                    statusCode: 404,
+                    message: "Error en el API.\n" + err
+                })
             });
         });
     };
 
-    getItem = (param) => {
+    getItem = (params) => {
         return new Promise(resolve => {
-            this.init().get(`/items/${param}`).then(res => {
+            this.init().get(`/items/${params}`).then(res => {
                 resolve(res.data)
+            }).catch(err => {
+                resolve({
+                    statusCode: 404,
+                    message: "Error en el API.\n" + err
+                })
             });
-        });
+        })
+    };
+
+    getBreadcrumb = (params) => {
+        return new Promise(resolve => {
+            this.init().post('/items/breadcrumb', params).then(res => {
+                resolve(res.data)
+            }).catch(err => {
+                resolve({
+                    statusCode: 404,
+                    message: "Error en el API.\n" + err
+                })
+            });
+        })
     };
 }

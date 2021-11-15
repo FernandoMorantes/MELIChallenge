@@ -11,6 +11,11 @@ function ProductsListCard(props) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
 
+    const decimalToShow = (x) => {
+        let decimalStr = x.toString()
+        return x === 0 ? "" : decimalStr.substring(decimalStr.indexOf(".") + 1, decimalStr.length)
+    }
+
     const handleToDetail = () => {
         navigate(`/items/${itemData.id}`);
     }
@@ -21,7 +26,10 @@ function ProductsListCard(props) {
                 <img onClick={handleToDetail} className="product-img" src={itemData.picture} alt="Product"></img>
                 <div className="product-info">
                     <div className="product-title">
-                        <h1 onClick={handleToDetail}>$ {numberWithDots(itemData.price.amount)}</h1>
+                        <div className="price" onClick={handleToDetail}>
+                            <h1>$ {numberWithDots(itemData.price.amount)}</h1>
+                            <p>{decimalToShow(itemData.price.decimals)}</p>
+                        </div>
                         {itemData.free_shipping &&
                             <img className="free-shipping" src={freeShipping} alt="Free Shipping"></img>
                         }

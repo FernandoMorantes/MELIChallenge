@@ -1,14 +1,23 @@
 @import "../../variables"
 
-.breadcrumb
-        padding: 16px 0
-        color: $gray
-        font-size: 14px
-        white-space: pre
-        margin: 0
-        white-space: normal
-        word-wrap: break-word
+.breadcrumb-wrapper
+    display: flex
+    flex-direction: row
 
-        @media screen and (max-width: $medium-breakpoint)
-            padding: 16px
+    @media screen and (max-width: $medium-breakpoint)
+        padding: 16px
+
+    span
+        display: flex
+        flex-direction: row
+
+        .breadcrumb
+                padding: 16px 0
+                color: $gray
+                font-size: 14px
+                white-space: pre
+                margin: 0
+                margin-right: 8px
+                white-space: normal
+                word-wrap: break-word
             

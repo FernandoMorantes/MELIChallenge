@@ -1,0 +1,40 @@
+@import "../../variables"
+    
+.error-wrapper
+    width: 100%
+    height: calc(100vh - 154px)
+    display: flex
+    align-items: center
+    justify-content: center
+
+    .error
+        width: 50%
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+
+        .error_icon
+            width: 70%
+            object-fit: contain
+            margin-bottom: 32px
+
+        p
+            word-wrap: break-word
+            white-space: pre
+            text-align: center
+            font-size: 18px
+            margin-bottom: 8px
+
+        p.message
+            color: $dark-gray
+        
+        button.btn-try-again
+            margin-top: 16px
+            padding: 8px 32px
+            max-width: 100%
+            background-color: #DBDBDB
+            color: $secondary
+            border-radius: 4px
+            border: none
+            outline: none

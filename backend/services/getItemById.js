@@ -40,9 +40,6 @@ function getItemById(req) {
                     response = responseBuild.res
                 }
             }
-
-            statusCode = 200;
-            message = "OK";
         }
 
         resolve({

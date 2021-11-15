@@ -28,23 +28,37 @@
         display: flex
         align-items: center
 
-        .search-input
-            width: calc(100% - 38px)
-            padding: 7px 15px
-            -webkit-border-radius: 2px
-            border-radius: 2px 0 0 2px
+        .css-nnbavb
+            display: none 
+
+        .MuiOutlinedInput-root
+            width: 100% !important
             background-color: #fff
-            border: 0 rgba(0,0,0,.2)
-            outline: none
+            width: calc(100% - 38px)
+            -webkit-border-radius: 2px !important
+            border-radius: 2px 0 0 2px !important
+            padding: 0 !important
 
-            &:focus
-                border: none
+            input
+                width: calc(100% - 38px)
+                padding: 8px 15px !important
+                -webkit-border-radius: 2px !important
+                border-radius: 2px 0 0 2px !important
+                font-size: 15px !important
+                background-color: #fff
+                border: none !important
+                outline: none
 
-            &::placeholder
-                color: $gray
+            .MuiAutocomplete-endAdornment
+                display: none
+            
+            .MuiOutlinedInput-notchedOutline
+                top: 0 !important
+                border: none !important
 
         .search-btn
             background-color: $light-gray
             padding: 7px 15px
             border: none
             border-radius: 0 2px 2px 0
+
