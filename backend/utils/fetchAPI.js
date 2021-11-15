@@ -1,5 +1,7 @@
 const axios = require('axios');
 
+// Funcion encargada de hacer el llamado a la url especificada en los parametros de la funcion
+// Solo funciona para hacer consultas GET
 function fetchAPI(url, params) {
     return new Promise(resolve => {
         if (url === null && url !== "") {

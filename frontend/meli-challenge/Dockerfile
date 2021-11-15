@@ -1,19 +1,19 @@
-# pull official base image
+# Pull de la imagen oficial que se utiliza como base
 FROM node:14-alpine
 
-# set working directory
+# Creando el directorio para la aplicacion
 WORKDIR /app
 
-# install app dependencies
+# Instalando las dependencias
 COPY package.json ./
 COPY yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-# add app
+# Empaquetando la aplicacion
 COPY . .
 
-# configure port
+# Configurando el puerto
 EXPOSE 3000
 
-# start app
+# Iniciando la aplicacion
 CMD ["yarn", "start"]

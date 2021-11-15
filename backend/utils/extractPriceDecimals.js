@@ -1,3 +1,4 @@
+// Funcion encargada de extraer la parte entera de un numero y la parte decimal del mismo
 function extractPriceDecimals(price) {
     return {
         price: Math.floor(price),

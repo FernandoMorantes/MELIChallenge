@@ -1,19 +1,20 @@
+# Pull de la imagen oficial que se utiliza como base
 FROM node:16
 
-# Create app directory
+# Creando el directorio para la aplicacion
 WORKDIR /usr/src/app
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
+# Instalando las dependencias
+# El wildcard es utilizado para asegurar que tanto el package.json y el package-lock.json son copiados
 COPY package*.json ./
 
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
 
-# Bundle app source
+# Empaquetando la aplicacion
 COPY . .
 
+# Configurando el puerto
 EXPOSE 8080
+
+# Iniciando la aplicacion
 CMD [ "node", "index.js" ]

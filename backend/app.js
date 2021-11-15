@@ -5,10 +5,11 @@ const items = require('./routes/items');
 
 const app = express();
 
-// view engine setup
+// Configuracion del view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// Configuracion del puerto
 app.set('port', process.env.PORT || 8080);
 
 app.use(express.json());
@@ -16,46 +17,45 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-
+// Utilizado para poder utilizar archivos estaticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Add headers before the routes are defined
+// Configurando los headers
 app.use(function (req, res, next) {
 
-    // Website you wish to allow to connect
+    // Solo se permite la conexion cruzada desde el frontend local
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-    // Request methods you wish to allow
+    // Request methods permitidos
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-    // Request headers you wish to allow
+    // Request headers permitidos
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
+    // Permitir que el front utilice cookies en las request enviadas
     res.setHeader('Access-Control-Allow-Credentials', true);
 
     // Pass to next layer of middleware
     next();
 });
 
-// healthy
+// Definicion del healthy
 app.get('/api/', function (req, res) {
     res.status(500).send('MELI Challenge APÌ working!. v1.0');
 });
 
+// Definicion de la subruta para el manejo de las request de los items
 app.use('/api/items', items);
 
-// Error handlers
-
-// catch 404 and forward to error handler
+// Atrapa un 404 and y lo envia al error handler
 app.use(function (req, res, next) {
     const err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-// development error handler will print stacktrace
+// Error handler
+// En modo desarrollo por lo que imprime el stack completo del error
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -64,5 +64,5 @@ app.use(function (err, req, res, next) {
     });
 });
 
-// export app
+// exportando app
 module.exports = app;

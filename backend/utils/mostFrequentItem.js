@@ -1,12 +1,14 @@
+// Funcion encargada de encontar el elemento mas frecuente dentro de un arreglo
 function mostFrequentItem(arr, n) {
     return new Promise(resolve => {
+        // Se ordena el arreglo de mayor a menor (si es un arreglo de estrings se ordena lexicograficamente)
         arr.sort();
 
-        // Entontrando el elemento con mayot frecuencia recorriendo linearmente el arreglo ordenado
         let max_count = 1,
             res = arr[0];
         let curr_count = 1;
 
+        // Entontrando el elemento con mayor frecuencia recorriendo linearmente el arreglo ordenado
         for (let i = 1; i < n; i++) {
             if (arr[i] == arr[i - 1])
                 curr_count++;
@@ -26,9 +28,7 @@ function mostFrequentItem(arr, n) {
         }
 
         resolve(res);
-
     })
-    
 }
 
 module.exports = {
