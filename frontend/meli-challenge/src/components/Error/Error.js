@@ -2,6 +2,7 @@ import React from "react";
 import errorIcon from '../../assets/icons/ic_error.PNG';
 import "./Error.sass"
 
+// Componente utilizado para mostar los mensajes de error en la aplicacion
 function Error(props) {
     const handleTryAgain = () => {
         window.location.reload();

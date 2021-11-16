@@ -2,6 +2,7 @@ import React from "react";
 import Loader from "react-loader-spinner";
 import "./CustomLoader.sass"
 
+// Renderiza un componente visual de carga
 function CustomLoader() {
     return (
         <div className="loader-wrapper">
