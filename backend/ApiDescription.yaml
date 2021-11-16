@@ -1,0 +1,235 @@
+swagger: '2.0'
+info:
+  description: MELI Frontend Challenge API
+  version: 1.0.0
+  title: MELI Frontend Challenge API
+  # put the contact info for your development or API team
+  contact:
+    email: josefernandomorantes@gmail.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: Items services
+  description: Defined services for item management
+
+paths:
+  /:
+    get:
+      summary: checks if the API is receiving requests
+      operationId: healthy
+      description: |
+        A simple get used for the health check of the API
+      produces:
+      - text/html
+      responses:
+        200:
+          description: MELI Challenge APÌ working!. v1.0
+        404:
+          description: Not Found
+        500:
+          description: bad input parameter
+  /items:
+    get:
+      tags:
+      - Items services
+      summary: Searches products by a query string
+      operationId: search
+      description: |
+        By passing a query string it calls the MELI API in order to retrieve the products that match with the specific query
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: q
+        description: Pass a search string for looking up in the products list
+        required: true
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            $ref: '#/definitions/SearchResults'
+        400:
+          description: El parametro de busqueda ingresado no es valido
+        500:
+          description: Internal server error
+  /items/{id}:
+    get:
+      tags:
+      - Items services
+      summary: Get the item with the specified ID
+      operationId: getItem
+      description: |
+        By passing an specific item ID the service returns the info of that item 
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        description: item ID
+        required: true
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            $ref: '#/definitions/ItemResults'
+        400:
+          description: El parametro de busqueda ingresado no es valido
+        500:
+          description: Internal server error
+  /breadcrumb:
+    post:
+      tags:
+        - Items services
+      summary: Returns the breadcrumb 
+      description: |
+        Returns the breadcrumb items based on the most common category founded in the request array
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: categories
+          description: Array of the categories
+          schema:
+            type: array
+            items:
+              type: string
+              example: MLA3422
+      responses:
+        200:
+          description: breadcrumb 
+          schema:
+            $ref: '#/definitions/BreadcrumbResults'
+        400:
+          description: El parametro de busqueda ingresado no es valido
+        500:
+          description: Internal server error
+definitions:
+  SearchResults:
+    properties:
+      statusCode:
+        type: number
+        example: 200
+      message:
+        type: string
+        example: OK
+      author:
+        $ref: '#/definitions/Author'
+      categories:
+        type: array
+        items:
+          type: string
+          example: MLA3422
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/item'
+  ItemResults:
+    properties:
+      statusCode:
+        type: number
+        example: 200
+      message:
+        type: string
+        example: OK
+      author:
+        $ref: '#/definitions/Author'
+      response:
+        $ref: '#/definitions/ItemResponse'
+  BreadcrumbResults:
+    properties:
+      statusCode:
+        type: number
+        example: 200
+      message:
+        type: string
+        example: OK
+      author:
+        $ref: '#/definitions/Author'
+      response:
+        type: array
+        items:
+          type: string
+          example: Computacion y tecnologia
+  item:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: MLA1111873634
+      title:
+        type: string
+        example: Figura Crystal Guardian Del Hollow Knight Impresa En 3d
+      price:
+        $ref: '#/definitions/Price'
+      picture:
+        type: string
+        example: http://http2.mlstatic.com/D_840466-MLA48188354882_112021-I.jpg
+      condition:
+        type: string
+        example: new
+      free_shipping:
+        type: boolean
+        example: false
+      address:
+        type: string
+        example: Berazategui, Buenos Aires
+  ItemResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: MLA1111873634
+      title:
+        type: string
+        example: Figura Crystal Guardian Del Hollow Knight Impresa En 3d
+      price:
+        $ref: '#/definitions/Price'
+      picture:
+        type: string
+        example: http://http2.mlstatic.com/D_840466-MLA48188354882_112021-I.jpg
+      condition:
+        type: string
+        example: new
+      free_shipping:
+        type: boolean
+        example: false
+      description:
+        type: string
+        example: Banquito de madera de pino al natural ...
+      category:
+        type: string
+        example: MLA6656
+  Author:
+    properties:
+      name:
+        type: string
+        example: José Fernando
+      lastname:
+        type: string
+        example: Morantes Florez
+  Price:
+    properties:
+      currency:
+        type: string
+        example: ARS
+      amount:
+        type: number
+        example: 3450
+      decimals:
+        type: number
+        example: 0.05
+
+        
+# Added by API Auto Mocking Plugin
+host: localhost:8080
+basePath: /api
+schemes:
+ - http

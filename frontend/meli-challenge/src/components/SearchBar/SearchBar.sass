@@ -1,0 +1,65 @@
+@import "../../variables"
+@import "~bootstrap/scss/bootstrap"
+
+.navbar
+    background-color: $primary
+    padding: 8px 55px
+
+    @media screen and (max-width: $medium-breakpoint)
+        padding: 8px
+
+    .center-v
+        display: flex
+        align-items: center
+
+        @media screen and (max-width: $large-breakpoint)
+            justify-content: center
+
+    .logo
+        cursor: pointer
+        max-height: 36px
+        object-fit: contain
+
+        @media screen and (max-width: $large-breakpoint)
+            margin-bottom: 8px
+
+    .search-form
+        width: 100%
+        display: flex
+        align-items: center
+
+        .css-nnbavb
+            display: none 
+
+        // Sobreescritura de las clases definidas para la libreria utilizada para el autocomplete
+        .MuiOutlinedInput-root
+            width: 100% !important
+            background-color: #fff
+            width: calc(100% - 38px)
+            -webkit-border-radius: 2px !important
+            border-radius: 2px 0 0 2px !important
+            padding: 0 !important
+
+            input
+                width: calc(100% - 38px)
+                padding: 8px 15px !important
+                -webkit-border-radius: 2px !important
+                border-radius: 2px 0 0 2px !important
+                font-size: 15px !important
+                background-color: #fff
+                border: none !important
+                outline: none
+
+            .MuiAutocomplete-endAdornment
+                display: none
+            
+            .MuiOutlinedInput-notchedOutline
+                top: 0 !important
+                border: none !important
+
+        .search-btn
+            background-color: $light-gray
+            padding: 7px 15px
+            border: none
+            border-radius: 0 2px 2px 0
+

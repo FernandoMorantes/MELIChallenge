@@ -1,0 +1,7 @@
+{
+    "urlAPIMELI": "https://api.mercadolibre.com/",
+    "endpointSearch": "sites/MLA/search?q=",
+    "endpointProductInfo": "items/",
+    "endpointCategories": "categories/",
+    "endpointProductDescription": "/description"
+}

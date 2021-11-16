@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "f21ed028-197b-49e4-b58d-98a6ec5639ab",
+		"name": "Mi API prueba MELI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Producto por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/items/MLA737567562",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"items",
+						"MLA737567562"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/items?q=ipad%20pro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"items"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "ipad%20pro"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Breadcrumb",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categories\": [\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA1166\",\r\n            \"MLA30084\",\r\n            \"MLA373840\",\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA1166\",\r\n            \"MLA1635\",\r\n            \"MLA373840\",\r\n            \"MLA373840\",\r\n            \"MLA34269\",\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA1166\",\r\n            \"MLA1635\",\r\n            \"MLA3422\",\r\n            \"MLA3422\",\r\n            \"MLA34294\",\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA1166\",\r\n            \"MLA30084\",\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA30084\",\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA3422\",\r\n            \"MLA30084\",\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA3422\",\r\n            \"MLA34294\",\r\n            \"MLA3422\",\r\n            \"MLA3422\",\r\n            \"MLA3422\",\r\n            \"MLA373840\",\r\n            \"MLA34269\",\r\n            \"MLA1635\",\r\n            \"MLA1716\",\r\n            \"MLA1716\",\r\n            \"MLA1716\",\r\n            \"MLA1716\",\r\n            \"MLA3422\",\r\n            \"MLA3422\"\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/items/breadcrumb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"items",
+						"breadcrumb"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
